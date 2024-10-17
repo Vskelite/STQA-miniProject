@@ -1,0 +1,21 @@
+{
+  "id": "f5037c92-c4fa-4649-aae4-d95913324e79",
+  "version": "2.0",
+  "name": "TodoAppTest",
+  "url": "http://localhost:3000/",
+  "tests": [{
+    "id": "19bfd36f-dfd7-4b6f-88a8-a007efd097db",
+    "name": "Untitled",
+    "commands": []
+  }],
+  "suites": [{
+    "id": "123546f3-9c07-4105-8787-c9665fed5773",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["19bfd36f-dfd7-4b6f-88a8-a007efd097db"]
+  }],
+  "urls": [],
+  "plugins": []
+}
