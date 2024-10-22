@@ -6,12 +6,11 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-// Middlewares
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('public'));
 
-// Initialize SQLite Database
 const db = new sqlite3.Database('./database/todo.db', (err) => {
     if (err) {
         console.error("Error opening database " + err.message);
@@ -24,7 +23,6 @@ const db = new sqlite3.Database('./database/todo.db', (err) => {
     }
 });
 
-// Get all tasks
 app.get('/tasks', (req, res) => {
     db.all('SELECT * FROM tasks', (err, rows) => {
         if (err) {
@@ -35,7 +33,7 @@ app.get('/tasks', (req, res) => {
     });
 });
 
-// Add new task
+
 app.post('/tasks', (req, res) => {
     const { task } = req.body;
     db.run('INSERT INTO tasks (task, done) VALUES (?, 0)', [task], function (err) {
@@ -47,7 +45,7 @@ app.post('/tasks', (req, res) => {
     });
 });
 
-// Update task (mark as done/undone)
+
 app.put('/tasks/:id', (req, res) => {
     const { id } = req.params;
     const { done } = req.body;
@@ -60,7 +58,6 @@ app.put('/tasks/:id', (req, res) => {
     });
 });
 
-// Delete task
 app.delete('/tasks/:id', (req, res) => {
     const { id } = req.params;
     db.run('DELETE FROM tasks WHERE id = ?', [id], function (err) {
@@ -72,7 +69,7 @@ app.delete('/tasks/:id', (req, res) => {
     });
 });
 
-// Start the server
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
